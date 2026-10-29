@@ -12,6 +12,7 @@
 </p>
 
 <p align="center">
+  <a href="https://little-days-todo-m7q2.shouuu336.chatgpt.site/#today"><strong>打开网页版</strong></a> ·
   <a href="#手机安装与下载">手机安装与下载</a> ·
   <a href="#界面概览">界面概览</a> ·
   <a href="#快速开始">快速开始</a> ·
