@@ -51,9 +51,17 @@ pnpm build
 
 CI 只读取仓库并检查构建，不会部署网站、创建 Release 或上传到商店。
 
+## Android 直接下载
+
+当前 Android 测试版发布为 [`android-preview-1.0.0`](https://github.com/swaggyer/Todo/releases/tag/android-preview-1.0.0) 的公开附件。普通使用者通过首页唯一的 APK 下载按钮获取文件，无需登录 GitHub 或解压；安装步骤见[手机安装说明](INSTALL.md)。
+
+发布附件为已构建的 `little-days-android-preview.apk`，没有重新编译。原始构建提交为 `bf5819561e8bf001caef9de81a7c99f49370139b`，APK SHA-256 为 `4784fef8e324c083039fcb59baaac85756681b56978b8f238925b5d11cd91d06`。Release 另保存 `SHA256SUMS.txt` 供核验。
+
+本次经用户授权执行一次发布：只下载原有构建产物，核对上述哈希后上传固定版本的附件。临时流程仅为该发布任务授予 `actions: read` 和 `contents: write`，发布后从默认分支移除，不保留常驻自动发布任务。Release 附件不会随 Actions 产物的 14 天保留期自动删除。
+
 ## 手动构建安装测试产物
 
-当前 Android 测试版的下载与安装步骤见[手机安装说明](INSTALL.md)。`Android download` 工作流仅使用仓库读取权限，单独构建 Android APK；可手动触发，也会在自身工作流文件更新时触发。产物保留 14 天，不创建 Release。
+以下构建入口供开发与测试使用；普通使用者使用上述 Release 附件。`Android download` 工作流仅使用仓库读取权限，单独构建 Android APK；可手动触发，也会在自身工作流文件更新时触发。Actions 产物保留 14 天，不创建 Release。
 
 打开 GitHub 仓库的 **Actions → Build packages → Run workflow**。工作流只通过手动触发运行，包含三项独立构建：
 

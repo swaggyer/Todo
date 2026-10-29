@@ -22,8 +22,11 @@
 
 ## 手机安装与下载
 
-**Android 测试版已构建成功（2026-10-29）**：[下载 Android 安装包 ZIP](https://github.com/swaggyer/Todo/actions/runs/40853667706/artifacts/12887393939) · [构建记录](https://github.com/swaggyer/Todo/actions/runs/40853667706)。下载需要登录 GitHub；解压后打开 `little-days-android-preview.apk`，按手机提示安装。此下载保留至 **2026-11-12**。
+<p align="center">
+  <a href="https://github.com/swaggyer/Todo/releases/download/android-preview-1.0.0/little-days-android-preview.apk"><strong>下载 Android 测试版 APK</strong></a>
+</p>
 
+用手机浏览器打开上面的链接即可下载，无需登录 GitHub，也无需解压。下载完成后打开 `little-days-android-preview.apk`，按手机提示确认安装。浏览器不能跳过系统安装确认。
 
 Android 为调试签名的测试包，尚未完成真机验证。后续版本可能无法覆盖安装；更换版本或卸载前先在应用内导出备份。网页与 App 数据各自保存在本机，不会自动同步。详细步骤见[手机安装说明](docs/INSTALL.md)。
 
@@ -136,11 +139,11 @@ little-days/
 ## 自动检查与打包
 
 - **CI**：在 `main` 更新或 Pull Request 时运行源码检查和构建。
-- **Android download**：提供上述 Android 测试版；可手动重新构建，产物保存 14 天。
+- **Android download**：供开发时手动构建调试 APK，Actions 产物保存 14 天；首页下载按钮使用单独保存的 Release 附件。
 - **Build packages**：在 [Actions](https://github.com/swaggyer/Todo/actions) 手动触发，分别构建网页 ZIP、Android 调试 APK 和未签名的 iOS 模拟器应用。
 - **本地打包**：运行 `pnpm package`，产物保存到 `artifacts`。
 
-工作流不会自动发布网站、创建 Release 或上传应用商店。Android 首次编译已通过，iOS 原生构建仍待确认。详见 [构建与发布](docs/RELEASE.md)。
+保留的构建工作流不会自动发布网站、创建 Release 或上传应用商店。首页的 APK 由本次授权的一次性发布提供，临时发布流程不作为常驻任务保留。Android 首次编译已通过，iOS 原生构建仍待确认。详见 [构建与发布](docs/RELEASE.md)。
 
 ## 数据与隐私
 

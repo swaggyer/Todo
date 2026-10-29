@@ -6,7 +6,9 @@
 
 - 源码与 README 已上传至 `swaggyer/Todo`，GitHub CI 检查与构建成功。
 - [Android download](https://github.com/swaggyer/Todo/actions/runs/40853667706) 已完成原生 Gradle 编译，成功生成调试签名 APK、SHA-256 校验文件与可下载产物。构建源码提交为 `bf5819561e8bf001caef9de81a7c99f49370139b`。
-- 工作流仅有仓库读取权限，不会发布 Release 或上传应用商店。
+- 保留的构建工作流仅有仓库读取权限，不会发布 Release 或上传应用商店。
+- 经用户授权，将同一 APK 公开发布为 [`android-preview-1.0.0`](https://github.com/swaggyer/Todo/releases/tag/android-preview-1.0.0) 的附件。已验证未登录下载返回 HTTP 200、APK 文件类型与附件文件名正确；下载文件为 8,319,569 字节，SHA-256 为 `4784fef8e324c083039fcb59baaac85756681b56978b8f238925b5d11cd91d06`，与原产物一致。
+- 临时发布流程仅为本次发布使用，完成后从默认分支移除；README 与手机安装说明采用直接 APK 下载入口，不再要求登录或解压。
 - Android 真机及原生权限交互尚未验证；iOS 编译、签名和真机安装尚未执行。详见[手机安装说明](INSTALL.md)。
 
 以下为 2026-10-27 的源码交付记录，后续进展以上述补充为准。
