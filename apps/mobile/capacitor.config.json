@@ -1,0 +1,9 @@
+{
+  "appId": "com.swaggyer.littledays",
+  "appName": "小日",
+  "webDir": "www",
+  "backgroundColor": "#ffffff",
+  "ios": { "contentInset": "automatic", "preferredContentMode": "mobile" },
+  "android": { "backgroundColor": "#ffffff" },
+  "plugins": { "SplashScreen": { "launchShowDuration": 0 } }
+}

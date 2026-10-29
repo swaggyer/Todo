@@ -1,0 +1,20 @@
+{
+  "name": "little-days",
+  "version": "1.0.0",
+  "private": true,
+  "description": "小日 · Little Days — Web, Android and iOS",
+  "packageManager": "pnpm@11.25.0",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "package": "node scripts/package.mjs",
+    "mobile:sync": "pnpm build && pnpm --filter @little-days/mobile exec cap sync",
+    "mobile:sync:android": "pnpm build && pnpm --filter @little-days/mobile exec cap sync android",
+    "mobile:sync:ios": "pnpm build && pnpm --filter @little-days/mobile exec cap sync ios",
+    "mobile:android": "pnpm mobile:sync:android && pnpm --filter @little-days/mobile exec cap open android",
+    "mobile:ios": "pnpm mobile:sync:ios && pnpm --filter @little-days/mobile exec cap open ios"
+  },
+  "devDependencies": { "esbuild": "^0.27.0", "fflate": "^0.8.2" }
+}

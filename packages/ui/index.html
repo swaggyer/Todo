@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff"><meta name="description" content="小日 Little Days — 把工作、学习与生活，一件件放好。">
+  <title>小日 · Little Days</title><link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="theme.css">
+</head>
+<body>
+<svg class="svg-defs" xmlns="http://www.w3.org/2000/svg"><defs>
+ <symbol id="i-today" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+ <symbol id="i-lists" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="5" rx="1.8"/><rect x="5" y="11" width="14" height="5" rx="1.8"/><path d="M5 19h14"/></symbol>
+ <symbol id="i-note" viewBox="0 0 24 24"><path d="M19 12.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h7.5M9 15l1-4L18 3l3 3-8 8-4 1Z"/></symbol>
+ <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+ <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+ <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.7 7.3L22 12l-7.3 2.7L12 22l-2.7-7.3L2 12l7.3-2.7L12 2Z"/></symbol>
+ <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v4m8-4v4M4 11h16"/></symbol>
+ <symbol id="i-camera" viewBox="0 0 24 24"><path d="m8 5 1-2h6l1 2h4a1 1 0 0 1 1 1v13H3V6a1 1 0 0 1 1-1h4Z"/><circle cx="12" cy="12" r="4"/></symbol>
+ <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/></symbol>
+ <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+ <symbol id="i-work" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="3"/><path d="M8 7V4h8v3M3 12c5 4 13 4 18 0M12 12v4"/></symbol>
+ <symbol id="i-learn" viewBox="0 0 24 24"><path d="M12 6c-3-3-7-3-10-2v15c3-1 7-1 10 2 3-3 7-3 10-2V4c-3-1-7-1-10 2Zm0 0v15"/></symbol>
+ <symbol id="i-life" viewBox="0 0 24 24"><path d="M12 21S2 15 2 8a5 5 0 0 1 10-1A5 5 0 0 1 22 8c0 7-10 13-10 13Z"/></symbol>
+ <symbol id="i-stack" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8l10-5Zm-10 9 10 5 10-5M2 16l10 5 10-5"/></symbol>
+ <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+ <symbol id="i-bin" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7"/></symbol>
+ <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+ <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></symbol>
+</defs></svg>
+<div class="app-shell">
+ <aside class="sidebar">
+  <a href="#today" class="brand" aria-label="小日首页"><span class="brand-mark">小</span><span>小日<span class="brand-en">LITTLE DAYS</span></span></a>
+  
+  <nav class="main-nav" aria-label="主导航">
+   <button class="nav-item active" data-page="today"><svg><use href="#i-today"/></svg><span>Today <small>今日</small></span><span class="nav-count" id="navCount">6</span></button>
+   <button class="nav-item" data-page="lists"><svg><use href="#i-lists"/></svg><span>Lists <small>清单</small></span></button>
+   <button class="nav-item" data-page="notes"><svg><use href="#i-note"/></svg><span>Notes <small>随记</small></span></button>
+  </nav>
+  <div class="sidebar-lists"><span class="eyebrow">分类</span><button data-category="work"><i class="dot work"></i>Work <span>工作</span></button><button data-category="learn"><i class="dot learn"></i>Learn <span>学习</span></button><button data-category="life"><i class="dot life"></i>Life <span>生活</span></button></div>
+  <div class="sidebar-bottom"><button class="storage-info" id="storageInfo"><i></i> 已保存在此设备 <svg><use href="#i-download"/></svg></button></div>
+ </aside>
+ <main>
+  <header class="topbar"><div><span class="status-dot"></span> LITTLE DAYS</div><span id="topDate"></span><button class="mobile-add icon-btn" aria-label="新建待办" data-add-task><svg><use href="#i-plus"/></svg></button></header>
+  <section class="page active" id="page-today" aria-labelledby="today-title">
+   <div class="page-heading"><div><h1 id="today-title">Today<span class="heading-dot">.</span></h1></div><button class="primary-btn" data-add-task><svg><use href="#i-plus"/></svg> 添加待办 <span class="key-hint">N</span></button></div>
+   <div class="today-layout"><div class="today-main">
+    <section class="progress-card" id="progressCard" aria-label="今日完成进度">
+     <div class="sky-art" aria-hidden="true"><div class="sky-sun"></div><div class="sky-hill h1"></div><div class="sky-hill h2"></div><div class="sky-hill h3"></div><svg class="orbit" viewBox="0 0 300 250"><ellipse cx="170" cy="160" rx="150" ry="64" transform="rotate(-30 170 160)"/><ellipse cx="170" cy="160" rx="150" ry="84" transform="rotate(-30 170 160)"/></svg></div>
+     <div class="progress-top"><span><i class="tiny-dot"></i> 今日进度</span><span id="progressPercent">33%</span></div>
+     <div class="progress-center"><div class="ring-wrap"><svg class="progress-ring" viewBox="0 0 130 130"><circle class="ring-track" cx="65" cy="65" r="54"/><circle id="progressArc" cx="65" cy="65" r="54"/></svg><svg class="ring-spark"><use href="#i-spark"/></svg></div><div class="progress-count"><div class="eyebrow">DONE TODAY</div><div class="count-line"><span class="rolling-number" id="doneNumber" aria-live="polite"></span><span class="count-total">/ <b id="totalNumber">6</b></span></div></div></div>
+     <div class="progress-bottom"><span>完成 / 总计</span><span id="remainingText">未完成 · 4</span></div>
+    </section>
+    <section class="task-section"><div class="section-toolbar"><h2>今天要做 <span id="todayTaskCount">6</span></h2><div class="filter-pills" id="todayFilters"><button class="active" data-filter="all">全部</button><button data-filter="open">待完成</button><button data-filter="done">已完成</button></div></div><div class="task-list" id="todayTasks"></div><button class="add-row" data-add-task><svg><use href="#i-plus"/></svg> 添加待办 <span>↵</span></button></section>
+    
+   </div><aside class="today-aside">
+    <div class="aside-heading"><h2>我的清单</h2><button class="text-btn" data-go="lists">查看全部 <svg><use href="#i-arrow"/></svg></button></div>
+    <div class="mini-stack" id="miniStack"><button class="category-mini mini-work" data-category="work"><svg><use href="#i-work"/></svg><div><strong>Work</strong></div><span class="mini-number" data-cat-count="work"></span><svg class="mini-arrow"><use href="#i-arrow"/></svg></button><button class="category-mini mini-learn" data-category="learn"><svg><use href="#i-learn"/></svg><div><strong>Learn</strong></div><span class="mini-number" data-cat-count="learn"></span><svg class="mini-arrow"><use href="#i-arrow"/></svg></button><button class="category-mini mini-life" data-category="life"><svg><use href="#i-life"/></svg><div><strong>Life</strong></div><span class="mini-number" data-cat-count="life"></span><svg class="mini-arrow"><use href="#i-arrow"/></svg></button></div>
+    <button class="stack-switch" id="miniStackToggle" aria-expanded="false"><svg><use href="#i-stack"/></svg><span>展开卡片</span></button>
+    <section class="inspiration-preview"><div class="aside-heading"><h2><svg><use href="#i-spark"/></svg> 随记</h2><button class="text-btn" data-go="notes">随记 <svg><use href="#i-arrow"/></svg></button></div><button class="quick-note" id="quickNote"><span class="quick-note-title">新建随记</span><span class="quick-note-bottom">文字 / 照片 <svg><use href="#i-plus"/></svg></span></button></section>
+    
+   </aside></div>
+  </section>
+  <section class="page" id="page-lists" aria-labelledby="lists-title"><div class="page-heading"><div><h1 id="lists-title">Lists<span class="heading-dot purple">.</span></h1></div><button class="primary-btn" data-add-task><svg><use href="#i-plus"/></svg> 添加待办</button></div><div class="list-intro"><span>WORK / LEARN / LIFE</span><button class="text-btn" id="listStackToggle" aria-expanded="false"><svg><use href="#i-stack"/></svg><span>展开卡片</span></button></div><div class="list-deck" id="listDeck"></div><section class="all-tasks-panel"><div class="section-toolbar"><div class="category-tabs" id="categoryTabs"><button class="active" data-cat-filter="all">全部清单</button><button data-cat-filter="work"><i class="dot work"></i> Work</button><button data-cat-filter="learn"><i class="dot learn"></i> Learn</button><button data-cat-filter="life"><i class="dot life"></i> Life</button></div><select id="listStatus" aria-label="清单完成状态"><option value="all">全部状态</option><option value="open">待完成</option><option value="done">已完成</option></select></div><div class="task-list" id="allTasks"></div><button class="add-row" data-add-task><svg><use href="#i-plus"/></svg> 添加待办</button></section></section>
+  <section class="page" id="page-notes" aria-labelledby="notes-title"><div class="page-heading"><div><h1 id="notes-title">Notes<span class="heading-dot orange">.</span></h1></div><button class="primary-btn" id="addNote"><svg><use href="#i-plus"/></svg> 写一则随记</button></div><div class="notes-toolbar"><span>全部随记</span><span id="notesCount"></span></div><div class="notes-grid" id="notesGrid"></div></section>
+  <footer class="main-footer"><span>小日 LITTLE DAYS</span><span id="footerYear"></span></footer>
+ </main>
+</div>
+<nav class="mobile-nav" aria-label="手机导航"><button class="active" data-page="today"><svg><use href="#i-today"/></svg><span>今日</span></button><button data-page="lists"><svg><use href="#i-lists"/></svg><span>清单</span></button><button data-page="notes"><svg><use href="#i-note"/></svg><span>随记</span></button></nav>
+<dialog id="taskDialog"><form id="taskForm"><div class="dialog-heading"><div><h2 id="taskDialogTitle">新建待办</h2></div><button type="button" class="icon-btn" data-close="taskDialog" aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><input type="hidden" id="taskId"><label class="field-label" for="taskTitle">待办内容</label><input id="taskTitle" class="title-input" placeholder="输入待办内容" maxlength="120" required autocomplete="off"><label class="field-label">放进哪个清单</label><div class="choice-row" id="taskCategory"><button type="button" data-value="work" class="selected"><i class="dot work"></i> Work 工作</button><button type="button" data-value="learn"><i class="dot learn"></i> Learn 学习</button><button type="button" data-value="life"><i class="dot life"></i> Life 生活</button></div><label class="field-label">安排周期</label><div class="choice-row period-choices" id="taskPeriod"><button type="button" class="selected" data-value="day">一日</button><button type="button" data-value="week">一周</button><button type="button" data-value="custom">自定义</button></div><div class="date-fields"><label><span id="startDateLabel">日期</span><input type="date" id="taskStart" required></label><label id="endDateField" hidden><span>结束日期</span><input type="date" id="taskEnd"></label></div><p class="field-note" id="periodHelp">仅在所选日期显示。</p><label class="field-label">时间 <span class="optional">轻拨滚轮选择</span></label><div class="time-picker"><div class="wheel" id="hourWheel" role="spinbutton" tabindex="0" aria-label="小时" aria-valuemin="0" aria-valuemax="23"></div><span>:</span><div class="wheel" id="minuteWheel" role="spinbutton" tabindex="0" aria-label="分钟" aria-valuemin="0" aria-valuemax="55"></div><label class="no-time"><input type="checkbox" id="noTime"> 不指定时间</label></div><div class="dialog-actions"><button type="button" class="danger-btn" id="deleteTask" hidden><svg><use href="#i-bin"/></svg> 删除</button><button type="button" class="secondary-btn" data-close="taskDialog">取消</button><button type="submit" class="primary-btn">保存 <svg><use href="#i-check"/></svg></button></div></form></dialog>
+<dialog id="noteDialog"><form id="noteForm"><div class="dialog-heading"><div><h2>新建随记</h2></div><button type="button" class="icon-btn" data-close="noteDialog" aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><input id="noteId" type="hidden"><label class="sr-only" for="noteTitle">随记标题</label><input id="noteTitle" class="title-input" placeholder="标题（选填）" maxlength="80"><label class="sr-only" for="noteText">随记内容</label><textarea id="noteText" placeholder="记录想法……" maxlength="6000"></textarea><div id="photoPreview" class="photo-preview" hidden><img alt="随记图片预览"><button class="icon-btn" type="button" id="removePhoto" aria-label="移除照片"><svg><use href="#i-close"/></svg></button></div><div class="photo-actions"><button class="secondary-btn" type="button" id="uploadPhoto"><svg><use href="#i-image"/></svg> 上传照片</button><button class="secondary-btn" type="button" id="takePhoto"><svg><use href="#i-camera"/></svg> 拍摄</button><input type="file" id="photoInput" accept="image/*" hidden><input type="file" id="cameraInput" accept="image/*" capture="environment" hidden></div><div class="note-color-row"><span>卡片颜色</span><div id="noteColors"><button type="button" data-color="butter" class="color-swatch butter selected" aria-label="赭金"></button><button type="button" data-color="sage" class="color-swatch sage" aria-label="祖母绿"></button><button type="button" data-color="lilac" class="color-swatch lilac" aria-label="深紫"></button><button type="button" data-color="peach" class="color-swatch peach" aria-label="赭红"></button><button type="button" data-color="blue" class="color-swatch blue" aria-label="钴蓝"></button></div></div><div class="dialog-actions"><button type="button" class="danger-btn" id="deleteNote" hidden><svg><use href="#i-bin"/></svg> 删除</button><button type="button" class="secondary-btn" data-close="noteDialog">取消</button><button type="submit" class="primary-btn" id="saveNote">保存 <svg><use href="#i-check"/></svg></button></div></form></dialog>
+<dialog id="storageDialog"><div class="dialog-heading"><h2>数据备份</h2><button class="icon-btn" data-close="storageDialog" aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><p class="storage-description">待办与照片随记保存在当前浏览器中。你可以导出完整备份，在另一台设备导入继续使用。</p><button class="primary-btn" id="exportData"><svg><use href="#i-download"/></svg> 导出备份</button><button class="secondary-btn" id="importData">导入备份</button><input type="file" id="importInput" accept="application/json,.json" hidden><p class="field-note">导入将合并记录，不会清空现有内容。清除浏览器数据前，请先备份。</p></dialog>
+<div class="toast" id="toast" role="status"></div><div id="particles" aria-hidden="true"></div>
+<script src="app.js"></script>
+</body></html>
