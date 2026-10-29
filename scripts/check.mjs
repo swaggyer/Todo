@@ -46,4 +46,7 @@ if(built){
   assert((await read('apps/mobile/www/index.html')).includes('native-bridge.js'));
   assert(!(await read('apps/mobile/www/index.html')).includes('pwa.js'));
 }
+const storageRegression=spawnSync(process.execPath,[path.join(root,'scripts/storage-regression.mjs')],{encoding:'utf8'});
+assert.equal(storageRegression.status,0,storageRegression.stderr||storageRegression.stdout);
+process.stdout.write(storageRegression.stdout);
 console.log('Passed JavaScript, asset, manifest, native config and data compatibility checks.');

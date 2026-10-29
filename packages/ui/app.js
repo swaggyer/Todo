@@ -11,11 +11,40 @@ const dateKey = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth()+1)
 const addDays = (key, n) => {const d = new Date(key+'T12:00:00');d.setDate(d.getDate()+n);return dateKey(d);};
 const uid = () => crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+Math.random().toString(36).slice(2);
 let today = dateKey(), page = 'today', todayFilter = 'all', categoryFilter = 'all', listExpanded = false;
-let state, db, taskCategory = 'work', taskPeriod = 'day', noteColor = 'butter', draftPhoto = null, imageLoading = false;
+let state = {version:1,tasks:[],notes:[]}, db, taskCategory = 'work', taskPeriod = 'day', noteColor = 'butter', draftPhoto = null, imageLoading = false;
 let toastTimer, persistQueue = Promise.resolve(), lastDone = -1, photoToken = 0, savingTask = false, savingNote = false;
+let storageReady = false, storageConflict = false, lastSavedSignature;
+function setStorageStatus(status){
+  const messages={loading:'正在读取记录',ready:'已保存在此设备',saving:'正在保存',error:'本机保存异常，请重试',conflict:'另一页面已更新，请刷新'};
+  $('#storageStatus').textContent=messages[status];
+  $('#storageInfo').setAttribute('aria-label',messages[status]+'，打开数据备份');
+  $('i',$('#storageInfo')).style.background=status==='error'||status==='conflict'?'#9b371d':status==='ready'?'#07583f':'#795509';
+  for(const id of ['exportData','importData','importInput'])$('#'+id).disabled=!storageReady||storageConflict;
+}
 const databaseReady = new Promise((resolve, reject) => {const req = indexedDB.open('little-days-v1',1);req.onupgradeneeded=()=>req.result.createObjectStore('app');req.onsuccess=()=>{db=req.result;resolve(db);};req.onerror=()=>reject(req.error);});
-async function readSaved(){await databaseReady;return new Promise((resolve,reject)=>{const tx=db.transaction('app');const r=tx.objectStore('app').get('state');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
-function persist(){const snapshot=structuredClone(state);const operation=persistQueue.then(async()=>{await databaseReady;return new Promise((resolve,reject)=>{const tx=db.transaction('app','readwrite');tx.objectStore('app').put(snapshot,'state');tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});});persistQueue=operation.catch(()=>{});return operation;}
+async function readSaved(){await databaseReady;return new Promise((resolve,reject)=>{const tx=db.transaction('app');const r=tx.objectStore('app').get('state');let saved;r.onsuccess=()=>{saved=r.result;};tx.oncomplete=()=>resolve(saved);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});}
+function persist(){
+  if(!storageReady||storageConflict)return Promise.reject(new Error('storage-not-ready'));
+  const snapshot=structuredClone(state);
+  const operation=persistQueue.then(async()=>{
+    if(!storageReady||storageConflict)throw new Error('storage-not-ready');
+    await databaseReady;setStorageStatus('saving');
+    return new Promise((resolve,reject)=>{
+      const tx=db.transaction('app','readwrite'),store=tx.objectStore('app');let failure;
+      const current=store.get('state');
+      current.onsuccess=()=>{try{
+        // A stale tab must not replace records saved by another tab.
+        if(JSON.stringify(current.result)!==lastSavedSignature){storageConflict=true;failure=new Error('storage-conflict');tx.abort();return;}
+        store.put(snapshot,'state');
+      }catch(error){failure=error;tx.abort();}};
+      tx.oncomplete=()=>{lastSavedSignature=JSON.stringify(snapshot);setStorageStatus('ready');resolve();};
+      tx.onerror=()=>reject(failure||tx.error||new Error('storage-write-failed'));
+      tx.onabort=()=>reject(failure||tx.error||new Error('storage-write-aborted'));
+    });
+  });
+  const reported=operation.catch(error=>{setStorageStatus(storageConflict?'conflict':'error');throw error;});
+  persistQueue=reported.catch(()=>{});return reported;
+}
 function toast(message){$('#toast').textContent=message;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2900);}
 function seed(){const task=(title,category,time,done=false)=>({id:uid(),title,category,time,done,start:today,end:today,period:'day',created:Date.now()});return {version:1,tasks:[task('给绿植浇一点水','life','08:30',true),task('整理本周的工作思路','work','09:00',true),task('完成新项目的第一版提案','work','10:30'),task('读 20 页一直想读的书','learn','13:30'),task('出门走走，收集一点秋天','life','17:00'),task('学一点新的设计知识','learn','20:30')],notes:[{id:uid(),title:'慢一点，光会照进来',text:'下午的光刚好落在窗边。\n突然觉得，生活不需要总是很满。',image:'assets/note-light.svg',color:'peach',created:Date.now()-86400000},{id:uid(),title:'一个小小的想法',text:'把「必须完成」换成「我想尝试」。\n\n也许开始一件事，可以轻一点。',image:null,color:'lilac',created:Date.now()-172800000},{id:uid(),title:'留白的早晨',text:'一杯咖啡，几页书。\n先把自己的节奏找回来。',image:'assets/note-coffee.svg',color:'sage',created:Date.now()-259200000},{id:uid(),title:'给未来的自己',text:'不必每一天都闪闪发光。\n那些认真生活的普通日子，也很珍贵。',image:null,color:'butter',created:Date.now()-345600000}]};}
 function activeToday(t){return t.start<=today&&t.end>=today;}
@@ -80,10 +109,10 @@ document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='n'&&!e.ctrlKey
 $$('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target!==d)return;const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}));
 $('.brand').addEventListener('click',e=>{e.preventDefault();goTo('today');});
 $('#storageInfo').addEventListener('click',()=>$('#storageDialog').showModal());
-$('#exportData').addEventListener('click',async()=>{if(nativeBridge?.isNative){try{await nativeBridge.exportBackup(state,today);toast('已打开备份分享。');}catch{toast('未完成分享，记录仍保存在此设备。');}return;}const blob=new Blob([JSON.stringify({...state,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='day-todo-backup-'+today+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('完整备份已导出，包含随记照片。');});
-$('#importData').addEventListener('click',()=>$('#importInput').click());
+$('#exportData').addEventListener('click',async()=>{if(!storageReady||storageConflict){toast('记录尚未就绪，请刷新后重试。');return;}if(nativeBridge?.isNative){try{await nativeBridge.exportBackup(state,today);toast('已打开备份分享。');}catch{toast('未完成分享，记录仍保存在此设备。');}return;}const blob=new Blob([JSON.stringify({...state,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='day-todo-backup-'+today+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('完整备份已导出，包含随记照片。');});
+$('#importData').addEventListener('click',()=>{if(storageReady&&!storageConflict)$('#importInput').click();});
 function validateBackup(data){if(!data||!Array.isArray(data.tasks)||!Array.isArray(data.notes)||data.tasks.length>10000||data.notes.length>5000)throw Error('invalid');const date=/^\d{4}-\d{2}-\d{2}$/;const tasks=data.tasks.map(t=>{if(typeof t.id!=='string'||typeof t.title!=='string'||!t.title.trim()||t.title.length>120||!categories[t.category]||!['day','week','custom'].includes(t.period)||!date.test(t.start)||!date.test(t.end)||t.start>t.end||!Number.isFinite(t.created)||typeof t.done!=='boolean'||typeof t.time!=='string'||(t.time&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(t.time)))throw Error('invalid');return {id:t.id,title:t.title,category:t.category,period:t.period,start:t.start,end:t.end,time:t.time,created:t.created,done:t.done};});const notes=data.notes.map(n=>{if(typeof n.id!=='string'||typeof n.title!=='string'||typeof n.text!=='string'||n.title.length>80||n.text.length>6000||!Number.isFinite(n.created)||!colors.includes(n.color)||(n.image&&typeof n.image!=='string')||(n.image&&!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(n.image)&&!['assets/note-light.svg','assets/note-coffee.svg'].includes(n.image)))throw Error('invalid');return {id:n.id,title:n.title,text:n.text,image:n.image||null,color:n.color,created:n.created};});return {tasks,notes};}
-$('#importInput').addEventListener('change',async e=>{const file=e.target.files[0];e.target.value='';if(!file)return;if(file.size>80*1024*1024){toast('备份超过 80MB，暂时无法导入。');return;}let data;try{data=validateBackup(JSON.parse(await file.text()));}catch{toast('这份文件不是有效的 day todo 备份。');return;}const old=structuredClone(state);const merge=(arr,added)=>{const map=new Map(arr.map(x=>[x.id,x]));added.forEach(x=>{if(!map.has(x.id))map.set(x.id,x);});return [...map.values()];};state.tasks=merge(state.tasks,data.tasks);state.notes=merge(state.notes,data.notes);try{await persist();render();$('#storageDialog').close();toast('备份已合并，现有记录也都保留着。');}catch{state=old;toast('导入未保存，请检查浏览器储存空间。');}});
+$('#importInput').addEventListener('change',async e=>{const file=e.target.files[0];e.target.value='';if(!storageReady||storageConflict||!file)return;if(file.size>80*1024*1024){toast('备份超过 80MB，暂时无法导入。');return;}let data;try{data=validateBackup(JSON.parse(await file.text()));}catch{toast('这份文件不是有效的 day todo 备份。');return;}const old=structuredClone(state);const merge=(arr,added)=>{const map=new Map(arr.map(x=>[x.id,x]));added.forEach(x=>{if(!map.has(x.id))map.set(x.id,x);});return [...map.values()];};state.tasks=merge(state.tasks,data.tasks);state.notes=merge(state.notes,data.notes);try{await persist();render();$('#storageDialog').close();toast('备份已合并，现有记录也都保留着。');}catch{state=old;toast('导入未保存，请检查浏览器储存空间。');}});
 $('#noteDialog').addEventListener('close',()=>{try{localStorage.removeItem('little-days-camera-draft');}catch{}photoToken++;imageLoading=false;$('#saveNote').disabled=false;});
 async function restoreCameraPhoto(){
   if(!state||!nativeBridge?.restoredPhoto)return;
@@ -96,4 +125,20 @@ async function restoreCameraPhoto(){
 window.addEventListener('little-days:restored-photo',restoreCameraPhoto);
 function updateDate(){const now=new Date();$('#topDate').textContent=now.toLocaleDateString('en-US',{month:'short',day:'2-digit',weekday:'short'}).toUpperCase();$('#footerYear').textContent=now.getFullYear();const next=dateKey();if(next!==today){today=next;if(state)render();}}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDate();});setInterval(updateDate,60000);updateDate();
-(async()=>{try{state=await readSaved();if(!state){state=seed();await persist();}render();goTo(location.hash.slice(1)||'today');await restoreCameraPhoto();}catch{state=seed();render();toast('当前浏览器无法保存数据，请允许此网站使用储存空间。');}})();
+async function initializeApp(){
+  setStorageStatus('loading');let loadFailed=false;
+  try{
+    const saved=await readSaved();
+    if(saved!==undefined&&(!saved||!Array.isArray(saved.tasks)||!Array.isArray(saved.notes)))throw new Error('stored-state-invalid');
+    lastSavedSignature=JSON.stringify(saved);storageReady=true;
+    if(saved===undefined){state=seed();await persist();}else{state=saved;setStorageStatus('ready');}
+  }catch{
+    state={version:1,tasks:[],notes:[]};storageReady=false;loadFailed=true;setStorageStatus('error');
+  }
+  // Display or camera failures must never substitute demo records for saved data.
+  try{render();goTo(location.hash.slice(1)||'today');}
+  catch{storageReady=false;setStorageStatus('error');toast('页面暂时无法显示，请刷新重试；已保存记录不会被替换。');return;}
+  if(loadFailed){toast('无法读取本机记录。原数据不会被覆盖，请刷新重试。');return;}
+  try{await restoreCameraPhoto();}catch{toast('照片草稿未恢复，已保存记录不受影响。');}
+}
+initializeApp();
