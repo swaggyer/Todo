@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="packages/ui/assets/icon.svg" width="76" height="76" alt="小日图标">
+  <img src="packages/ui/assets/icon.svg" width="76" height="76" alt="day todo 字母组合图标">
 </p>
 
-<h1 align="center">小日 · Little Days</h1>
+<h1 align="center">day todo</h1>
 
 <p align="center">记录工作、学习与生活中的待办和随记。</p>
 
@@ -23,16 +23,18 @@
 ## 手机安装与下载
 
 <p align="center">
-  <a href="https://github.com/swaggyer/Todo/releases/download/android-preview-1.0.0/little-days-android-preview.apk"><strong>下载 Android 测试版 APK</strong></a>
+  <a href="https://github.com/swaggyer/Todo/releases/download/android-preview-1.0.1/day-todo-android-preview.apk"><strong>下载 day todo Android 测试版 APK</strong></a>
 </p>
 
-用手机浏览器打开上面的链接即可下载，无需登录 GitHub，也无需解压。下载完成后打开 `little-days-android-preview.apk`，按手机提示确认安装。浏览器不能跳过系统安装确认。
+用手机浏览器打开上面的链接即可下载，无需登录 GitHub，也无需解压。下载完成后打开 `day-todo-android-preview.apk`，按手机提示确认安装。浏览器不能跳过系统安装确认。
 
 Android 为调试签名的测试包，尚未完成真机验证。后续版本可能无法覆盖安装；更换版本或卸载前先在应用内导出备份。网页与 App 数据各自保存在本机，不会自动同步。详细步骤见[手机安装说明](docs/INSTALL.md)。
 
 ## 界面概览
 
 纯白画布，深色高饱和卡片。英文使用 Times New Roman，中文使用系统黑体。
+
+应用名称为 **day todo**，图标以深钴蓝底色搭配白色 `to / do` 字母组合。1.0.1 更新名称与图标，保留已有清单、随记和数据格式。
 
 **界面概览（设计示意）**：以下插图依据当前界面布局绘制，用于说明信息结构，不是应用运行截图。
 
@@ -62,7 +64,7 @@ Android 为调试签名的测试包，尚未完成真机验证。后续版本可
 | 平台 | 项目内容 | 当前验证范围 |
 | --- | --- | --- |
 | **Web / PWA** | 静态网站、桌面图标、manifest 与离线缓存 | 已完成构建和浏览器主要交互检查 |
-| **Android** | Capacitor 原生工程、Gradle Wrapper、系统能力适配 | GitHub Actions 已成功编译调试 APK；真机测试待执行 |
+| **Android** | Capacitor 原生工程、Gradle Wrapper、系统能力适配 | 1.0.1 已成功编译并发布 APK，名称与图标已核验；真机测试待执行 |
 | **iPhone / iPad** | Xcode 工程、Swift Package Manager、权限与隐私声明 | 工程已生成并同步；原生编译与真机测试待执行 |
 
 仓库提供完整源码和构建流程，以及上述 Android 调试签名测试包；尚未提供正式签名分发包。详细记录见 [验证范围](docs/VALIDATION.md)。
@@ -97,7 +99,7 @@ pnpm dev
 
 ## 手机端工程
 
-原生容器使用 **Capacitor 8**，应用标识为 `com.swaggyer.littledays`。
+原生容器使用 **Capacitor 8**，应用标识保留为 `com.swaggyer.littledays`，用于维持原有应用与本地数据身份。
 
 **Android**：准备 Android Studio、Java 21 和 Android SDK，然后执行：
 
@@ -116,7 +118,7 @@ pnpm mobile:ios
 ## 项目结构
 
 ```text
-little-days/
+day-todo/
 ├── apps/
 │   ├── web/                    网页入口与构建产物
 │   └── mobile/
@@ -143,7 +145,7 @@ little-days/
 - **Build packages**：在 [Actions](https://github.com/swaggyer/Todo/actions) 手动触发，分别构建网页 ZIP、Android 调试 APK 和未签名的 iOS 模拟器应用。
 - **本地打包**：运行 `pnpm package`，产物保存到 `artifacts`。
 
-保留的构建工作流不会自动发布网站、创建 Release 或上传应用商店。首页的 APK 由本次授权的一次性发布提供，临时发布流程不作为常驻任务保留。Android 首次编译已通过，iOS 原生构建仍待确认。详见 [构建与发布](docs/RELEASE.md)。
+保留的构建工作流不会自动发布网站、创建 Release 或上传应用商店。首页的 APK 使用公开 Release 附件，临时发布流程不作为常驻任务保留。构建结果与分发记录见 [构建与发布](docs/RELEASE.md) 和 [验证范围](docs/VALIDATION.md)。
 
 ## 数据与隐私
 
