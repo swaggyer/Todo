@@ -25,12 +25,12 @@ const bridge = {
   },
   async exportBackup(data, date) {
     const file = await Filesystem.writeFile({
-      path: `little-days-backup-${date}.json`,
+      path: `day-todo-backup-${date}.json`,
       data: JSON.stringify({ ...data, exportedAt: new Date().toISOString() }, null, 2),
       directory: Directory.Cache,
       encoding: Encoding.UTF8
     });
-    await Share.share({ title: '小日备份', url: file.uri, dialogTitle: '保存或分享备份' });
+    await Share.share({ title: 'day todo 备份', url: file.uri, dialogTitle: '保存或分享备份' });
   },
   async completed() { try { await Haptics.impact({ style: ImpactStyle.Light }); } catch {} },
   restoredPhoto: null

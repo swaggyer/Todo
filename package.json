@@ -1,8 +1,8 @@
 {
   "name": "little-days",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
-  "description": "小日 · Little Days — Web, Android and iOS",
+  "description": "day todo — Web, Android and iOS",
   "packageManager": "pnpm@11.25.0",
   "engines": { "node": ">=24" },
   "scripts": {

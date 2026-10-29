@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#ffffff"><meta name="description" content="小日 Little Days — 把工作、学习与生活，一件件放好。">
-  <title>小日 · Little Days</title><link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#ffffff"><meta name="description" content="day todo — 把工作、学习与生活，一件件放好。">
+  <title>day todo</title><link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="theme.css">
 </head>
 <body>
@@ -29,7 +29,7 @@
 </defs></svg>
 <div class="app-shell">
  <aside class="sidebar">
-  <a href="#today" class="brand" aria-label="小日首页"><span class="brand-mark">小</span><span>小日<span class="brand-en">LITTLE DAYS</span></span></a>
+  <a href="#today" class="brand" aria-label="day todo 首页"><span class="brand-mark"><img src="assets/icon.svg" width="43" height="43" alt=""></span><span class="brand-wordmark">day todo</span></a>
   
   <nav class="main-nav" aria-label="主导航">
    <button class="nav-item active" data-page="today"><svg><use href="#i-today"/></svg><span>Today <small>今日</small></span><span class="nav-count" id="navCount">6</span></button>
@@ -40,7 +40,7 @@
   <div class="sidebar-bottom"><button class="storage-info" id="storageInfo"><i></i> 已保存在此设备 <svg><use href="#i-download"/></svg></button></div>
  </aside>
  <main>
-  <header class="topbar"><div><span class="status-dot"></span> LITTLE DAYS</div><span id="topDate"></span><button class="mobile-add icon-btn" aria-label="新建待办" data-add-task><svg><use href="#i-plus"/></svg></button></header>
+  <header class="topbar"><div><span class="status-dot"></span> day todo</div><span id="topDate"></span><button class="mobile-add icon-btn" aria-label="新建待办" data-add-task><svg><use href="#i-plus"/></svg></button></header>
   <section class="page active" id="page-today" aria-labelledby="today-title">
    <div class="page-heading"><div><h1 id="today-title">Today<span class="heading-dot">.</span></h1></div><button class="primary-btn" data-add-task><svg><use href="#i-plus"/></svg> 添加待办 <span class="key-hint">N</span></button></div>
    <div class="today-layout"><div class="today-main">
@@ -62,7 +62,7 @@
   </section>
   <section class="page" id="page-lists" aria-labelledby="lists-title"><div class="page-heading"><div><h1 id="lists-title">Lists<span class="heading-dot purple">.</span></h1></div><button class="primary-btn" data-add-task><svg><use href="#i-plus"/></svg> 添加待办</button></div><div class="list-intro"><span>WORK / LEARN / LIFE</span><button class="text-btn" id="listStackToggle" aria-expanded="false"><svg><use href="#i-stack"/></svg><span>展开卡片</span></button></div><div class="list-deck" id="listDeck"></div><section class="all-tasks-panel"><div class="section-toolbar"><div class="category-tabs" id="categoryTabs"><button class="active" data-cat-filter="all">全部清单</button><button data-cat-filter="work"><i class="dot work"></i> Work</button><button data-cat-filter="learn"><i class="dot learn"></i> Learn</button><button data-cat-filter="life"><i class="dot life"></i> Life</button></div><select id="listStatus" aria-label="清单完成状态"><option value="all">全部状态</option><option value="open">待完成</option><option value="done">已完成</option></select></div><div class="task-list" id="allTasks"></div><button class="add-row" data-add-task><svg><use href="#i-plus"/></svg> 添加待办</button></section></section>
   <section class="page" id="page-notes" aria-labelledby="notes-title"><div class="page-heading"><div><h1 id="notes-title">Notes<span class="heading-dot orange">.</span></h1></div><button class="primary-btn" id="addNote"><svg><use href="#i-plus"/></svg> 写一则随记</button></div><div class="notes-toolbar"><span>全部随记</span><span id="notesCount"></span></div><div class="notes-grid" id="notesGrid"></div></section>
-  <footer class="main-footer"><span>小日 LITTLE DAYS</span><span id="footerYear"></span></footer>
+  <footer class="main-footer"><span>day todo</span><span id="footerYear"></span></footer>
  </main>
 </div>
 <nav class="mobile-nav" aria-label="手机导航"><button class="active" data-page="today"><svg><use href="#i-today"/></svg><span>今日</span></button><button data-page="lists"><svg><use href="#i-lists"/></svg><span>清单</span></button><button data-page="notes"><svg><use href="#i-note"/></svg><span>随记</span></button></nav>

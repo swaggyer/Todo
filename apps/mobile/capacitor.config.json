@@ -1,6 +1,6 @@
 {
   "appId": "com.swaggyer.littledays",
-  "appName": "小日",
+  "appName": "day todo",
   "webDir": "www",
   "backgroundColor": "#ffffff",
   "ios": { "contentInset": "automatic", "preferredContentMode": "mobile" },

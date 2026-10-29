@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
-  <title id="title">小日 · Little Days 桌面界面设计示意</title>
+  <title id="title">day todo 桌面界面设计示意</title>
   <desc id="desc">白色页面、深色高饱和卡片、今日完成二项共六项、待办清单与三类生活切面。这是依据项目设计绘制的示意图，非运行截图。</desc>
   <defs>
     <style>
@@ -12,8 +12,8 @@
   </defs>
   <rect x="1" y="1" width="1398" height="898" rx="18" fill="#fff" stroke="#e4e8ef"/>
   <path d="M230 1v898" class="line"/>
-  <rect x="32" y="39" width="44" height="44" rx="11" fill="#123e91"/><text x="54" y="69" text-anchor="middle" class="white" font-size="27">小</text>
-  <text x="88" y="64" font-size="28" letter-spacing="3">小日</text><text x="88" y="83" font-size="10" letter-spacing="1.9">LITTLE DAYS</text>
+  <rect x="32" y="39" width="44" height="44" rx="11" fill="#123e91"/><text x="54" y="57" text-anchor="middle" class="white" font-size="18" font-weight="bold">to</text><text x="54" y="74" text-anchor="middle" class="white" font-size="18" font-weight="bold">do</text>
+  <text x="88" y="69" font-size="28" letter-spacing="1">day todo</text>
   <rect x="30" y="138" width="174" height="50" rx="10" fill="#123e91"/>
   <circle cx="55" cy="163" r="8" class="icon" color="#fff"/><path d="m51 163 3 3 5-6" class="icon" color="#fff"/>
   <text x="78" y="169" font-size="19" class="white">Today</text><text x="132" y="169" font-size="10" style="fill:#dbe7ff">今日</text><rect x="174" y="153" width="20" height="20" rx="5" fill="none" stroke="#ffffff55"/><text x="184" y="167" text-anchor="middle" font-size="11" class="white">4</text>
@@ -25,7 +25,7 @@
   <circle cx="50" cy="451" r="4" fill="#532783"/><text x="72" y="456" class="body">Learn</text><text x="170" y="456" class="small muted">学习</text>
   <circle cx="50" cy="497" r="4" fill="#9b371d"/><text x="72" y="502" class="body">Life</text><text x="170" y="502" class="small muted">生活</text>
   <circle cx="45" cy="836" r="2.5" fill="#07583f"/><text x="55" y="840" font-size="10" class="muted">已保存在此设备</text><path d="M176 830v9m-3-3 3 3 3-3m-9 3v4h12v-4" class="icon" color="#123e91" stroke-width="1.2"/>
-  <circle cx="286" cy="46" r="2.5" fill="#07583f"/><text x="297" y="50" class="caption" style="fill:#123e91">LITTLE DAYS</text><text x="1315" y="50" text-anchor="end" class="caption muted">TUE, OCT 27</text>
+  <circle cx="286" cy="46" r="2.5" fill="#07583f"/><text x="297" y="50" class="caption" style="fill:#123e91">DAY TODO</text><text x="1315" y="50" text-anchor="end" class="caption muted">TUE, OCT 27</text>
   <path d="M282 88h1050" class="line"/>
   <text x="282" y="175" font-size="64" letter-spacing="-2">Today<tspan fill="#07583f">.</tspan></text>
   <rect x="1188" y="128" width="144" height="47" rx="11" fill="#123e91"/><path d="M1209 151h15m-7.5-7.5v15" class="icon" color="#fff"/><text x="1238" y="156" class="small white">添加待办</text><rect x="1297" y="142" width="18" height="18" rx="4" fill="none" stroke="#ffffff50"/><text x="1306" y="155" text-anchor="middle" font-size="10" class="white">N</text>
@@ -54,5 +54,5 @@
   <text x="1157" y="526" text-anchor="middle" class="small" style="fill:#264575">▱ 展开卡片</text>
   <path d="M980 557h354" class="line"/><text x="980" y="593" class="body">随记</text><text x="1332" y="593" text-anchor="end" class="small" style="fill:#123e91">→</text>
   <rect x="980" y="619" width="354" height="164" rx="13" fill="#123e91"/><text x="1008" y="659" font-size="21" class="white">新建随记</text><text x="1008" y="751" class="small" style="fill:#e1eaff">文字 / 照片</text><path d="M1296 740h15m-7.5-7.5v15" class="icon" color="#e1eaff"/>
-  <path d="M282 877h1052" class="line"/><text x="282" y="895" font-size="9" class="muted">小日 LITTLE DAYS</text><text x="1332" y="895" text-anchor="end" font-size="9" class="muted">设计示意 · Sample data</text>
+  <path d="M282 877h1052" class="line"/><text x="282" y="895" font-size="9" class="muted">day todo</text><text x="1332" y="895" text-anchor="end" font-size="9" class="muted">设计示意 · Sample data</text>
 </svg>

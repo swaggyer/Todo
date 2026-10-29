@@ -37,14 +37,14 @@ jobs:
         run: |
           mkdir -p artifacts
           cd apps/web/dist
-          zip -q -r "$GITHUB_WORKSPACE/artifacts/little-days-web.zip" .
+          zip -q -r "$GITHUB_WORKSPACE/artifacts/day-todo-web.zip" .
           cd "$GITHUB_WORKSPACE/artifacts"
-          sha256sum little-days-web.zip > little-days-web.zip.sha256
+          sha256sum day-todo-web.zip > day-todo-web.zip.sha256
       - name: Upload website
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: little-days-web
-          path: artifacts/little-days-web.zip*
+          name: day-todo-web
+          path: artifacts/day-todo-web.zip*
           if-no-files-found: error
           retention-days: 14
           compression-level: 0
@@ -91,14 +91,14 @@ jobs:
       - name: Prepare APK and checksum
         run: |
           mkdir -p artifacts
-          cp apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk artifacts/little-days-android-debug.apk
+          cp apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk artifacts/day-todo-android-debug.apk
           cd artifacts
-          sha256sum little-days-android-debug.apk > little-days-android-debug.apk.sha256
+          sha256sum day-todo-android-debug.apk > day-todo-android-debug.apk.sha256
       - name: Upload Android test package
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: little-days-android-debug
-          path: artifacts/little-days-android-debug.apk*
+          name: day-todo-android-debug
+          path: artifacts/day-todo-android-debug.apk*
           if-no-files-found: error
           retention-days: 14
           compression-level: 0
@@ -150,14 +150,14 @@ jobs:
       - name: Archive simulator app
         run: |
           mkdir -p artifacts
-          ditto -c -k --sequesterRsrc --keepParent build/ios/Build/Products/Debug-iphonesimulator/App.app artifacts/little-days-ios-simulator.zip
+          ditto -c -k --sequesterRsrc --keepParent build/ios/Build/Products/Debug-iphonesimulator/App.app artifacts/day-todo-ios-simulator.zip
           cd artifacts
-          shasum -a 256 little-days-ios-simulator.zip > little-days-ios-simulator.zip.sha256
+          shasum -a 256 day-todo-ios-simulator.zip > day-todo-ios-simulator.zip.sha256
       - name: Upload iOS simulator package
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: little-days-ios-simulator
-          path: artifacts/little-days-ios-simulator.zip*
+          name: day-todo-ios-simulator
+          path: artifacts/day-todo-ios-simulator.zip*
           if-no-files-found: error
           retention-days: 14
           compression-level: 0

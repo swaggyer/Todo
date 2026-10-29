@@ -4,7 +4,7 @@
 
 | 项目 | 值 |
 | --- | --- |
-| 应用名称 | 小日 |
+| 应用名称 | day todo |
 | Android application ID / iOS Bundle ID | `com.swaggyer.littledays` |
 | 原生容器 | Capacitor 8 |
 | 共享界面源码 | `packages/ui` |

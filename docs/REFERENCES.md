@@ -1,6 +1,6 @@
 # 参考资料
 
-本工程的目录排布参考用户提供的 MoneyDance；界面与功能来自 Little Days 原有设计。
+本工程的目录排布参考用户提供的 MoneyDance；day todo 的界面与功能延续原有设计。
 
 - [MoneyDance 仓库说明](https://github.com/cshouuu/money-dance/blob/main/README.md)：应用、共享包、文档和工作流的组织。
 - [MoneyDance 移动端说明](https://github.com/cshouuu/money-dance/blob/main/docs/MOBILE.md)：Web 界面复用、Capacitor 原生容器和本地数据边界。
@@ -21,4 +21,4 @@ GitHub Actions 版本在 2026-10-27 根据各项目官方发布记录核对，�
 | [pnpm/action-setup](https://github.com/pnpm/action-setup/releases/tag/v6.1.0) | 6.1.0 |
 | [android-actions/setup-android](https://github.com/android-actions/setup-android/releases/tag/v4.0.4) | 4.0.4 |
 
-参考项目中的财务功能、桌宠、云服务与分发账号不属于 Little Days 工程；无需复制对应凭据或配置。
+参考项目中的财务功能、桌宠、云服务与分发账号不属于 day todo 工程；无需复制对应凭据或配置。

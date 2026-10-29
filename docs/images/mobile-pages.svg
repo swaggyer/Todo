@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-labelledby="title desc">
-  <title id="title">小日 · Little Days 手机三页面设计示意</title>
+  <title id="title">day todo 手机三页面设计示意</title>
   <desc id="desc">Today、Lists、Notes 三个手机页面的设计示意，采用白色背景、钴蓝、祖母绿、深紫及赭红卡片。并非设备运行截图。</desc>
   <defs>
     <style>text{font-family:'Times New Roman','SimHei','Heiti SC','Microsoft YaHei',sans-serif;fill:#182238}.muted{fill:#667085}.white{fill:#fff}.line{stroke:#e4e8ef;stroke-width:1}.icon{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.small{font-size:11px}.label{font-size:13px}.white-soft{fill:#e1eaff}</style>
@@ -14,10 +14,10 @@
     <symbol id="nav" viewBox="0 0 296 56"><rect width="296" height="56" rx="28" fill="#14294e"/></symbol>
   </defs>
   <rect width="1440" height="1000" rx="18" fill="#f7f9fc"/>
-  <text x="720" y="49" font-size="12" text-anchor="middle" letter-spacing="2.5" class="muted">LITTLE DAYS · THREE SPACES</text>
+  <text x="720" y="49" font-size="12" text-anchor="middle" letter-spacing="2.5" class="muted">DAY TODO · THREE SPACES</text>
   <g transform="translate(70 91)">
     <use href="#phone" width="390" height="840"/>
-    <circle cx="28" cy="75" r="2" fill="#07583f"/><text x="38" y="79" font-size="8" letter-spacing="1.5" style="fill:#123e91">LITTLE DAYS</text><text x="361" y="79" text-anchor="end" font-size="8" class="muted">TUE, OCT 27</text><path d="M26 102h338" class="line"/>
+    <circle cx="28" cy="75" r="2" fill="#07583f"/><text x="38" y="79" font-size="8" letter-spacing="1.5" style="fill:#123e91">DAY TODO</text><text x="361" y="79" text-anchor="end" font-size="8" class="muted">TUE, OCT 27</text><path d="M26 102h338" class="line"/>
     <text x="26" y="173" font-size="55" letter-spacing="-2">Today<tspan fill="#07583f">.</tspan></text><circle cx="343" cy="155" r="22" fill="#123e91"/><path d="M335 155h16m-8-8v16" class="icon" color="#fff"/>
     <rect x="26" y="211" width="338" height="235" rx="18" fill="url(#progress)"/>
     <circle cx="48" cy="241" r="2" fill="#fff"/><text x="58" y="245" class="small white">今日进度</text><text x="338" y="245" text-anchor="end" class="label white">33%</text>
@@ -33,7 +33,7 @@
   </g>
   <g transform="translate(525 91)">
     <use href="#phone" width="390" height="840"/>
-    <circle cx="28" cy="75" r="2" fill="#07583f"/><text x="38" y="79" font-size="8" letter-spacing="1.5" style="fill:#123e91">LITTLE DAYS</text><text x="361" y="79" text-anchor="end" font-size="8" class="muted">TUE, OCT 27</text><path d="M26 102h338" class="line"/>
+    <circle cx="28" cy="75" r="2" fill="#07583f"/><text x="38" y="79" font-size="8" letter-spacing="1.5" style="fill:#123e91">DAY TODO</text><text x="361" y="79" text-anchor="end" font-size="8" class="muted">TUE, OCT 27</text><path d="M26 102h338" class="line"/>
     <text x="26" y="173" font-size="55" letter-spacing="-1">Lists<tspan fill="#532783">.</tspan></text><circle cx="343" cy="155" r="22" fill="#123e91"/><path d="M335 155h16m-8-8v16" class="icon" color="#fff"/>
     <text x="26" y="218" font-size="8" letter-spacing="1.2" class="muted">WORK / LEARN / LIFE</text><text x="364" y="218" font-size="9" text-anchor="end" style="fill:#123e91">收起卡片</text>
     <g transform="rotate(-.7 195 304)"><rect x="26" y="244" width="338" height="119" rx="13" fill="#07583f"/><use href="#briefcase" x="48" y="265" width="21" height="21" class="icon" color="#fff"/><text x="337" y="275" text-anchor="end" class="small white">1 / 2 已完成</text><text x="49" y="330" font-size="31" class="white">Work<tspan dx="10" font-size="12">工作</tspan></text><use href="#arrow" x="325" y="322" width="20" height="20" class="icon" color="#fff"/></g>
@@ -44,7 +44,7 @@
   </g>
   <g transform="translate(980 91)">
     <use href="#phone" width="390" height="840"/>
-    <circle cx="28" cy="75" r="2" fill="#07583f"/><text x="38" y="79" font-size="8" letter-spacing="1.5" style="fill:#123e91">LITTLE DAYS</text><text x="361" y="79" text-anchor="end" font-size="8" class="muted">TUE, OCT 27</text><path d="M26 102h338" class="line"/>
+    <circle cx="28" cy="75" r="2" fill="#07583f"/><text x="38" y="79" font-size="8" letter-spacing="1.5" style="fill:#123e91">DAY TODO</text><text x="361" y="79" text-anchor="end" font-size="8" class="muted">TUE, OCT 27</text><path d="M26 102h338" class="line"/>
     <text x="26" y="173" font-size="55" letter-spacing="-1">Notes<tspan fill="#9b371d">.</tspan></text><circle cx="343" cy="155" r="22" fill="#123e91"/><path d="M335 155h16m-8-8v16" class="icon" color="#fff"/>
     <text x="26" y="218" class="small muted">全部随记</text><text x="364" y="218" text-anchor="end" class="small muted">4 则随记</text>
     <rect x="26" y="242" width="160" height="171" rx="12" fill="#fff" stroke="#bdcadd" stroke-dasharray="3 3"/><path d="M97 302h18m-9-9v18" class="icon" color="#123e91"/><text x="106" y="347" text-anchor="middle" class="small" style="fill:#123e91">新建随记</text>
