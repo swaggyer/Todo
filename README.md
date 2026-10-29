@@ -24,7 +24,6 @@
 
 **Android 测试版已构建成功（2026-10-29）**：[下载 Android 安装包 ZIP](https://github.com/swaggyer/Todo/actions/runs/40853667706/artifacts/12887393939) · [构建记录](https://github.com/swaggyer/Todo/actions/runs/40853667706)。下载需要登录 GitHub；解压后打开 `little-days-android-preview.apk`，按手机提示安装。此下载保留至 **2026-11-12**。
 
-**iPhone**：用 Safari 打开[小日网页版](https://little-days-todo-m7q2.shouuu336.chatgpt.site/#today)，点“分享 → 添加到主屏幕”。这是桌面网页版；当前没有可供真机安装的 IPA 或 TestFlight 邀请。站点若要求登录，请使用有访问权限的 ChatGPT 账号。
 
 Android 为调试签名的测试包，尚未完成真机验证。后续版本可能无法覆盖安装；更换版本或卸载前先在应用内导出备份。网页与 App 数据各自保存在本机，不会自动同步。详细步骤见[手机安装说明](docs/INSTALL.md)。
 
